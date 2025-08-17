@@ -1,0 +1,137 @@
+{
+  "DomainDNS": "test.intra",
+  "DomainNetBIOS": "TEST",
+  "RootDN": "DC=test,DC=intra",
+  "ParentOU": "Blaze",
+
+  "SubOUs": ["Groupen"],
+
+  "UsersByLocation": {
+    "City1": {
+      "Office": [
+        { "FirstName": "Ana",    "LastName": "Popescu", "Title": "Office" },
+        { "FirstName": "Radu",   "LastName": "Istrate", "Title": "Office" }
+      ],
+      "IT": [
+        { "FirstName": "Ion",    "LastName": "Ionescu", "Title": "Technician" },
+        { "FirstName": "Vasile", "LastName": "Stan",    "Title": "Security" }
+      ],
+      "HR": [
+        { "FirstName": "Elena",  "LastName": "Radu",    "Title": "HR" }
+      ],
+      "Managers": [
+        { "FirstName": "Cristina","LastName": "Pop",    "Title": "Manager" },
+        { "FirstName": "Ana",     "LastName": "Marin",  "Title": "Directeur" }
+      ]
+    },
+    "City2": {
+      "Sales": [
+        { "FirstName": "Rodica", "LastName": "Bacila",  "Title": "Sales" },
+        { "FirstName": "George", "LastName": "Marin",   "Title": "Sales" }
+      ],
+      "Marketing": [
+        { "FirstName": "Ioana",  "LastName": "Toma",    "Title": "Marketing" }
+      ]
+    }
+  },
+
+  "GlobalGroups": [
+    "GG_Office","GG_IT","GG_HR","GG_Managers",
+    "GG_Sales","GG_Marketing","GG_Intern"
+  ],
+
+  "DomainLocalGroups": [
+    "DL_Office_RW","DL_Office_R",
+    "DL_IT_M","DL_IT_R",
+    "DL_HR_M","DL_HR_R",
+    "DL_Managers",
+    "DL_Sales_M","DL_Sales_RW","DL_Sales_R",
+    "DL_Marketing_M","DL_Marketing_RW","DL_Marketing_R",
+    "DL_Intern_RW","DL_Interne_R"
+  ],
+
+  "GroupMap": {
+    "GG_Office":     ["DL_Office_RW"],
+    "GG_IT":         ["DL_IT_M","DL_Sales_R","DL_Office_R"],
+    "GG_HR":         ["DL_HR_M","DL_Office_R"],
+    "GG_Managers":   ["DL_Managers","DL_Sales_RW","DL_Office_RW","DL_Interne_R"],
+    "GG_Sales":      ["DL_Sales_M","DL_IT_R"],
+    "GG_Marketing":  ["DL_Marketing_M"],
+    "GG_Intern":     ["DL_Intern_RW"]
+  },
+
+  "UserTitleMap": {
+    "Office":     "GG_Office",
+    "Technician": "GG_IT",
+    "Security":   "GG_IT",
+    "IT":         "GG_IT",
+    "HR":         "GG_HR",
+    "Manager":    "GG_Managers",
+    "Directeur":  "GG_Managers",
+    "Sales":      "GG_Sales",
+    "Marketing":  "GG_Marketing",
+    "Interim":    "GG_Intern"
+  },
+
+  "DepartmentMap": {
+    "Office":    "Office",
+    "Technician":"IT",
+    "Security":  "IT",
+    "IT":        "IT",
+    "HR":        "HR",
+    "Manager":   "Managers",
+    "Directeur": "Managers",
+    "Sales":     "Sales",
+    "Marketing": "Marketing",
+    "Interim":   "Office"
+  },
+
+  "Folders": {
+    "BasePath": "E:\\Blaze",
+    "HomeFoldersBasePath": "E:\\BlazeUsers",
+    "DeptFolderPrefix": "USRS_",
+    "SubFolders": {
+      "Office": [
+        { "Group": "DL_Office_RW", "Right": "Modify" },
+        { "Group": "DL_Office_R",  "Right": "Read" }
+      ],
+      "IT": [
+        { "Group": "DL_IT_M", "Right": "FullControl" },
+        { "Group": "DL_IT_R", "Right": "Read" }
+      ],
+      "HR": [
+        { "Group": "DL_HR_M", "Right": "FullControl" },
+        { "Group": "DL_HR_R", "Right": "Read" }
+      ],
+      "Managers": [
+        { "Group": "DL_Managers", "Right": "FullControl" }
+      ],
+      "Sales": [
+        { "Group": "DL_Sales_M",  "Right": "FullControl" },
+        { "Group": "DL_Sales_RW", "Right": "Modify" },
+        { "Group": "DL_Sales_R",  "Right": "Read" }
+      ],
+      "Marketing": [
+        { "Group": "DL_Marketing_M",  "Right": "FullControl" },
+        { "Group": "DL_Marketing_RW", "Right": "Modify" },
+        { "Group": "DL_Marketing_R",  "Right": "Read" }
+      ]
+    }
+  },
+
+  "Shares": true,
+
+  "VLANs": {
+    "City1": {
+      "Office":   { "VlanId": 20, "Subnet": "192.168.1.32/27" },
+      "IT":       { "VlanId": 30, "Subnet": "192.168.1.64/27" },
+      "HR":       { "VlanId": 40, "Subnet": "192.168.1.96/27" },
+      "Servers":  { "VlanId": 50, "Subnet": "192.168.1.128/27" },
+      "Managers": { "VlanId": 60, "Subnet": "192.168.1.160/27" }
+    },
+    "City2": {
+      "Sales":     { "VlanId": 70, "Subnet": "172.16.1.0/27" },
+      "Marketing": { "VlanId": 80, "Subnet": "172.16.1.32/27" }
+    }
+  }
+}
