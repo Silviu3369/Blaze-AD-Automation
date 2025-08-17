@@ -1,5 +1,5 @@
 Usage
- Prerequisites
+1) Prerequisites
 
 Before running the script, make sure you have:
 
@@ -13,7 +13,7 @@ Script execution policy enabled:
 
 Set-ExecutionPolicy RemoteSigned -Scope Process -Force
 
- Running the Script
+2) Running the Script
 
 Navigate to the scripts folder:
 
@@ -27,7 +27,7 @@ Run the provisioning script with your configuration file:
 
 When prompted, enter the default password for new users.
 
- What the Script Does
+3) What the Script Does
 
 During execution, the script will:
 
@@ -55,7 +55,7 @@ Per-user shares (same name as folder)
 
 Export a CSV report under .\exports\
 
- Example Output
+4) Example Output
 [OU] Blaze
 [OU] Roeselare
 [OU] IT
@@ -69,7 +69,7 @@ Export a CSV report under .\exports\
 Report saved to: .\exports\Blaze-Users-20250817-113000.csv
 Setup complete.
 
- Verifying the Results
+5) Verifying the Results
 
 After the script runs, verify:
 
@@ -93,7 +93,7 @@ Shares Blaze_<Dept> and per-user shares exist
 
 Open the CSV report in .\exports\ to review created/processed users.
 
- Re-runs & Idempotency
+6) Re-runs & Idempotency
 
 The script is idempotent: running it multiple times is safe.
 
@@ -103,4 +103,4 @@ New entries from JSON are created automatically.
 
 ACLs are re-applied for consistency.
 
- With this guide, any admin can clone the repo, edit blaze_config.json, run the script, and instantly provision a Blaze-aligned Active Directory.
+⚡ With this guide, any admin can clone the repo, edit blaze_config.json, run the script, and instantly provision a Blaze-aligned Active Directory.
